@@ -14,3 +14,4 @@ RUN npm run build:company
 EXPOSE 3002
 
 CMD ["node", "dist/company/main.ts"]
+
