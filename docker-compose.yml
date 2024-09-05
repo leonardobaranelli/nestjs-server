@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  main-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=production
+
+  company:
+    build:
+      context: .
+      dockerfile: ./src/company/Dockerfile
+    ports:
+      - '3001:3001'
+    environment:
+      - NODE_ENV=production
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: ./src/dashboard/Dockerfile
+    ports:
+      - '3002:3002'
+    environment:
+      - NODE_ENV=production
