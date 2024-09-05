@@ -1,20 +1,17 @@
-# Dockerfile for company module
 FROM node:20.11.1-alpine
 
 WORKDIR /app
 
-# Copy only the company module dependencies
-COPY ./package*.json ./
-COPY ./src/company/package*.json ./src/company/
+COPY package*.json ./
 
-# Install dependencies specific to the company module
 RUN npm install
 
-# Copy the code for the company module
+COPY tsconfig.json ./
 COPY ./src/company ./src/company
 
-# Expose the port used by the company module, if applicable
-EXPOSE 3001
+RUN npm run build:company
 
-# Command to run the company module
-CMD ["npm", "run", "start:company"]
+EXPOSE 3002
+
+CMD ["node", "dist/company/main.ts"]
+

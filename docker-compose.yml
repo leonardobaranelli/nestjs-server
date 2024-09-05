@@ -6,24 +6,24 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - '3000:3000'
+      - '3001:3001'
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=development
 
   company:
     build:
       context: .
-      dockerfile: ./src/company/Dockerfile
-    ports:
-      - '3001:3001'
-    environment:
-      - NODE_ENV=production
-
-  dashboard:
-    build:
-      context: .
-      dockerfile: ./src/dashboard/Dockerfile
+      dockerfile: src/company/Dockerfile
     ports:
       - '3002:3002'
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=development
+ 
+ dashboard:
+    build:
+      context: .
+      dockerfile: src/dashboard/Dockerfile
+    ports:
+      - '3003:3003'
+    environment:
+      - NODE_ENV=development
